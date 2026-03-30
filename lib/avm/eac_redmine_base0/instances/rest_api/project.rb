@@ -5,11 +5,6 @@ module Avm
     module Instances
       class RestApi < ::EacRest::Api
         class Project < ::Avm::EacRedmineBase0::Instances::RestApi::EntityBase
-          # @return [String]
-          def prefix
-            "/projects/#{id}"
-          end
-
           # @return [Avm::EacRedmineBase0::Instances::RestApi::WikiPage]
           def wiki_page(name)
             child_entity(::Avm::EacRedmineBase0::Instances::RestApi::WikiPage, name)
@@ -22,6 +17,11 @@ module Avm
                 body_data.fetch('wiki_pages').map { |e| { wiki_class.const_get(:DATA_ROOT) => e } }
               end
             end
+          end
+
+          # @return [String]
+          def to_api_address_suffix_self
+            "/projects/#{id}"
           end
         end
       end
