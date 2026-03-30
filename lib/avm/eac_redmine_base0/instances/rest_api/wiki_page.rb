@@ -19,6 +19,11 @@ module Avm
             data.fetch(DATA_ROOT).fetch('text')
           end
 
+          # @return [String, nil]
+          def parent_title
+            data.fetch(DATA_ROOT).if_key('parent').if_present { |v| v.if_key('title') }
+          end
+
           # @return [String]
           def to_api_address_suffix_self
             "/wiki/#{id}"
