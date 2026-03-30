@@ -11,17 +11,17 @@ module Avm
 
           # @return [Hash]
           def data_from_id
-            fetch_data(prefix)
-          end
-
-          # @return [String]
-          def prefix
-            "#{parent_entity.prefix}/wiki/#{id}"
+            data_from_response(request_json.response)
           end
 
           # @return [String]
           def read
             data.fetch(DATA_ROOT).fetch('text')
+          end
+
+          # @return [String]
+          def to_api_address_suffix_self
+            "/wiki/#{id}"
           end
 
           # @param content [String]
