@@ -33,6 +33,11 @@ module Avm
             "/wiki/#{id}"
           end
 
+          # @return [String]
+          def title
+            data.fetch(DATA_ROOT).fetch('title')
+          end
+
           # @param content [String]
           # @return [+self+]
           def write(text)
