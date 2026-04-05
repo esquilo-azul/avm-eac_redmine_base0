@@ -7,14 +7,11 @@ module Avm
         class WikiPage < ::Avm::EacRedmineBase0::Instances::RestApi::EntityBase
           enable_simple_cache
 
+          DATA_ROOT = 'wiki_page'
+
           # @return [Hash]
           def data_from_id
             fetch_data(prefix)
-          end
-
-          # @return [String]
-          def data_root
-            'wiki_page'
           end
 
           # @return [String]
@@ -24,7 +21,7 @@ module Avm
 
           # @return [String]
           def read
-            data.fetch(data_root).fetch('text')
+            data.fetch(DATA_ROOT).fetch('text')
           end
 
           # @param content [String]
@@ -40,7 +37,7 @@ module Avm
           # @return [Hash]
           def write_data(text)
             {
-              data_root => { 'text' => text }
+              DATA_ROOT => { 'text' => text }
             }
           end
         end
