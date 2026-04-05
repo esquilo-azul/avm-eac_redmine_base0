@@ -14,6 +14,11 @@ module Avm
             data_from_response(request_json.response)
           end
 
+          # @return [Integer]
+          def id_from_data
+            ::CGI.escape(title)
+          end
+
           # @return [String]
           def read
             unless data.fetch(DATA_ROOT).key?('text')
