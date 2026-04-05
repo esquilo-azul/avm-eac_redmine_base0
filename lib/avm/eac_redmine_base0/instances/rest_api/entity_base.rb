@@ -20,10 +20,6 @@ module Avm
             raise "\"#{response.url}\" returned invalid JSON: \"#{response.body_str}\" " \
                   "(Status: #{response.status})"
           end
-
-          def fetch_data(url_suffix)
-            data_from_response(build_request(url_suffix).response)
-          end
         end
       end
     end
