@@ -16,6 +16,10 @@ module Avm
 
           # @return [String]
           def read
+            unless data.fetch(DATA_ROOT).key?('text')
+              self.data_or_id = id
+              self.internal_data = nil
+            end
             data.fetch(DATA_ROOT).fetch('text')
           end
 
