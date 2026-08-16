@@ -47,7 +47,8 @@ module Avm
           # @return [+self+]
           def write(text)
             data_from_response(
-              build_request(prefix).verb(:put).header('Content-type', 'application/json')
+              request_json.verb(:put)
+              .header('Content-type', 'application/json')
               .body_data(write_data(text).to_json).response
             )
           end
